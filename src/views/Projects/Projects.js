@@ -1,63 +1,17 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
+import {Route, NavLink} from 'react-router-dom';
 import {
   Row,
   Col,
   Card,
   CardHeader,
-  CardBody,
-  Table,
-  Pagination,
-  PaginationItem,
-  PaginationLink
+  CardBody
 } from 'reactstrap';
 
-class ProjectList extends Component {
-  render() {
-    return <Card>
-      <CardHeader>
-        <i className="fa fa-align-justify"></i> Projects
-      </CardHeader>
-      <CardBody>
-        <Table hover bordered striped responsive size="sm">
-          <thead>
-            <tr>
-              <th>Project ID</th>
-              <th>Project Name</th>
-              <th>Deadline</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>IIE2018S1</td>
-              <td>IIE 2018 Semester 1</td>
-              <td>5/5/2018</td>
-              <td>In Progress</td>
-            </tr>
-            <tr>
-              <td>BCC2018S1</td>
-              <td>BCC 2018 Semester 1</td>
-              <td>17/5/2018</td>
-              <td>In Progress</td>
-            </tr>
-          </tbody>
-        </Table>
-        <nav style={{float: "right"}}>
-          <Pagination>
-            <PaginationItem><PaginationLink previous href="#">Prev</PaginationLink></PaginationItem>
-            <PaginationItem active>
-              <PaginationLink href="#">1</PaginationLink>
-            </PaginationItem>
-            <PaginationItem><PaginationLink href="#">2</PaginationLink></PaginationItem>
-            <PaginationItem><PaginationLink href="#">3</PaginationLink></PaginationItem>
-            <PaginationItem><PaginationLink href="#">4</PaginationLink></PaginationItem>
-            <PaginationItem><PaginationLink next href="#">Next</PaginationLink></PaginationItem>
-          </Pagination>
-        </nav>
-      </CardBody>
-    </Card>
-  }
-}
+import ProjectList from './ProjectList';
+import CreateProjectForm from './CreateProjectForm';
+import ProjectDetail from './ProjectDetail';
 
 class Projects extends Component {
   render() {
@@ -65,7 +19,16 @@ class Projects extends Component {
       <div className="animated fadeIn">
         <Row>
           <Col xs="12" lg="12">
-            <ProjectList/>
+            <Card>
+              <CardHeader>
+                <i className="fa fa-align-justify"></i> Projects
+              </CardHeader>
+              <CardBody>
+                <Route exact path="/projects" name="Projects" component={ProjectList} />
+                <Route path="/projects/new" name="Projects" component={CreateProjectForm} />
+                <Route path="/projects/detail" name="Projects" component={ProjectDetail} />
+              </CardBody>
+            </Card>
           </Col>
         </Row>
       </div>

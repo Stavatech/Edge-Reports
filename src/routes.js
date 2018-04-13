@@ -5,6 +5,7 @@ const routes = {
   '/reviews': 'Internal Reviewers',
   '/returns': 'Storyboards Returned',
   '/users': 'Users',
-  '/projects': 'Projects'
+  '/projects': 'Projects',
+  '/projects/new': 'New Project'
 };
 export default routes;

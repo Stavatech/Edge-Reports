@@ -29,7 +29,7 @@ class Full extends Component {
                 <Route path="/design" name="InstructionalDesignersReport" component={InstructionalDesignersReport}/>
                 <Route path="/reviews" name="InternalReviewsReport" component={InternalReviewsReport}/>
                 <Route path="/returns" name="ReturnsReport" component={ReturnsReport}/>
-                <Route path="/projects" name="Projects" component={Projects}/>
+                <Route path="/projects" name="Projects" component={Projects} />
                 <Route path="/users" name="Users" component={Users}/>
                 <Redirect from="/" to="/dashboard"/>
               </Switch>

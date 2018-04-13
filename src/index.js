@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 import {HashRouter, Route, Switch} from 'react-router-dom';
+import rootReducer from './reducers'
 
 // Styles
 // Import Flag Icons Set
@@ -17,10 +20,14 @@ import '../scss/core/_dropdown-menu-right.scss'
 // Containers
 import Full from './containers/Full/'
 
+const store = createStore(rootReducer);
+
 ReactDOM.render((
   <HashRouter>
-    <Switch>
-      <Route path="/" name="Home" component={Full}/>
-    </Switch>
+    <Provider store={store}>
+      <Switch>
+        <Route path="/" name="Home" component={Full}/>
+      </Switch>
+    </Provider>
   </HashRouter>
 ), document.getElementById('root'));
