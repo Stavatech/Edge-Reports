@@ -1,16 +1,21 @@
-
+import { projectConstants } from '../constants';
 
 const initialState = {projects: [], projectsLoaded: false};
 
-const projects = (state=initialState, action) => {
+const projects = (state = initialState, action) => {
   switch (action.type) {
-    case 'SAVE_PROJECT':
+    case projectConstants.SAVE_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+
+    case projectConstants.SAVE_SUCCESS:
       let project = state.projects.find((item) => {
         return item.projectId === action.projectId;
       });
 
       if (project === undefined) {
-        // create project
         state.projects.push({
           projectId: action.projectId,
           projectName: action.projectName,
@@ -18,13 +23,22 @@ const projects = (state=initialState, action) => {
           status: "n/a"
         });
       } else {
-        // update project
         project.projectId = action.projectId;
         project.projectName = action.projectName;
         project.deadline = action.deadline;
       }
 
-      return {...state}
+      return {
+        ...state,
+        loading: false
+      }
+
+    case projectConstants.SAVE_FAILURE:
+      return {
+        ...state,
+        loading: false
+      }
+
     case 'LIST_PROJECTS':
       return {...state, projects: action.projects, projectsLoaded: true}
     default:

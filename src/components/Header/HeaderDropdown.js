@@ -6,6 +6,7 @@ import {
   DropdownToggle,
   Dropdown
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class HeaderDropdown extends Component {
 
@@ -43,7 +44,9 @@ class HeaderDropdown extends Component {
           <DropdownItem><i className="fa fa-file"></i> Projects<Badge color="primary">42</Badge></DropdownItem>
           <DropdownItem divider/>
           <DropdownItem><i className="fa fa-shield"></i> Lock Account</DropdownItem>
-          <DropdownItem><i className="fa fa-lock"></i> Logout</DropdownItem>
+          <DropdownItem><i className="fa fa-lock"></i>
+            <Link to="/auth/login">Logout</Link>
+          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     );

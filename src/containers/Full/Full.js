@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link, Switch, Route, Redirect} from 'react-router-dom';
 import {Container} from 'reactstrap';
+import {PrivateRoute} from '../../components/PrivateRoute';
 import Header from '../../components/Header/';
 import Sidebar from '../../components/Sidebar/';
 import Breadcrumb from '../../components/Breadcrumb/';
@@ -25,12 +26,12 @@ class Full extends Component {
             <Breadcrumb />
             <Container fluid>
               <Switch>
-                <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
-                <Route path="/design" name="InstructionalDesignersReport" component={InstructionalDesignersReport}/>
-                <Route path="/reviews" name="InternalReviewsReport" component={InternalReviewsReport}/>
-                <Route path="/returns" name="ReturnsReport" component={ReturnsReport}/>
-                <Route path="/projects" name="Projects" component={Projects} />
-                <Route path="/users" name="Users" component={Users}/>
+                <PrivateRoute path="/dashboard" name="Dashboard" component={Dashboard}/>
+                <PrivateRoute path="/design" name="InstructionalDesignersReport" component={InstructionalDesignersReport}/>
+                <PrivateRoute path="/reviews" name="InternalReviewsReport" component={InternalReviewsReport}/>
+                <PrivateRoute path="/returns" name="ReturnsReport" component={ReturnsReport}/>
+                <PrivateRoute path="/projects" name="Projects" component={Projects} />
+                <PrivateRoute path="/users" name="Users" component={Users}/>
                 <Redirect from="/" to="/dashboard"/>
               </Switch>
             </Container>
