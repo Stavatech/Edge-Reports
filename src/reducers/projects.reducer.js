@@ -39,7 +39,7 @@ const projects = (state = initialState, action) => {
         loading: false
       }
 
-    case 'LIST_PROJECTS':
+    case projectConstants.LIST_SUCCESS:
       return {...state, projects: action.projects, projectsLoaded: true}
     default:
       return state

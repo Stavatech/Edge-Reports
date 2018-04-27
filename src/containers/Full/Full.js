@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {Link, Switch, Route, Redirect} from 'react-router-dom';
-import {Container} from 'reactstrap';
-import {PrivateRoute} from '../../components/PrivateRoute';
+import React, { Component } from 'react';
+import { Link, Switch, Route, Redirect } from 'react-router-dom';
+import { Container } from 'reactstrap';
+import PrivateRoute from '../PrivateRoute';
 import Header from '../../components/Header/';
 import Sidebar from '../../components/Sidebar/';
 import Breadcrumb from '../../components/Breadcrumb/';

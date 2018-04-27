@@ -45,7 +45,7 @@ class HeaderDropdown extends Component {
           <DropdownItem divider/>
           <DropdownItem><i className="fa fa-shield"></i> Lock Account</DropdownItem>
           <DropdownItem><i className="fa fa-lock"></i>
-            <Link to="/auth/login">Logout</Link>
+            <Link to="/auth/logout">Logout</Link>
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>

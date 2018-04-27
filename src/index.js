@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import { PrivateRoute } from './components/PrivateRoute'
+
+import PrivateRoute from './containers/PrivateRoute';
 
 // Styles
 // Import Flag Icons Set
@@ -21,7 +21,7 @@ import '../scss/core/_dropdown-menu-right.scss';
 import Full from './containers/Full/';
 import Auth from './containers/Auth/';
 
-import { store, history } from './helpers';
+import { store } from './helpers';
 
 ReactDOM.render((
   <Provider store={store}>

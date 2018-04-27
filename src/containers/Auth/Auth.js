@@ -8,6 +8,7 @@ import Aside from '../../components/Aside/';
 import Footer from '../../components/Footer/';
 
 import Login from '../../views/Login/';
+import Logout from '../Logout';
 
 class Auth extends Component {
   render() {
@@ -19,6 +20,7 @@ class Auth extends Component {
             <Container fluid>
               <Switch>
                 <Route path="/auth/login" name="Login" component={Login}/>
+                <Route path="/auth/logout" name="Logout" component={Logout}/>
                 <Redirect from="/auth" to="/auth/login"/>
               </Switch>
             </Container>

@@ -1,36 +1,34 @@
+import { RSAA } from 'redux-api-middleware';
+
 import { authConstants } from '../constants';
 import { authService } from '../services';
-import { history } from '../helpers';
 
-function login(username, password) {
-    return dispatch => {
-        dispatch(request({ username }));
-        authService.login(username, password)
-            .then(
-                tokens => {
-                    dispatch(success(tokens));
-                    history.push('/');
-                },
-                error => {
-                    dispatch(failure(error));
-                    //dispatch(alertActions.error(error));
-                }
-            );
-    };
+export const login = (username, password) => ({
+  [RSAA]: {
+    endpoint: '/api/accounts/auth/token/obtain/',
+    method: 'POST',
+    body: JSON.stringify({username, password}),
+    headers: { 'Content-Type': 'application/json' },
+    types: [
+      authConstants.LOGIN_REQUEST, authConstants.LOGIN_SUCCESS, authConstants.LOGIN_FAILURE
+    ]
+  }
+});
 
-    function request(username) { return { type: authConstants.LOGIN_REQUEST, username } }
-    function success(tokens) { return { type: authConstants.LOGIN_SUCCESS, tokens } }
-    function failure(error) { return { type: authConstants.LOGIN_FAILURE, error } }
+export const refreshAccessToken = (token) => ({
+  [RSAA]: {
+    endpoint: '/api/accounts/auth/token/refresh/',
+    method: 'POST',
+    body: JSON.stringify({refresh: token}),
+    headers: { 'Content-Type': 'application/json' },
+    types: [
+      authConstants.REFRESH_REQUEST, authConstants.REFRESH_SUCCESS, authConstants.REFRESH_FAILURE
+    ]
+  }
+});
+
+export const logout = () => {
+  return {
+      type: authConstants.LOGOUT
+  }
 }
-
-const logout = () => {
-    authService.logout();
-    return {
-        type: authConstants.LOGOUT
-    }
-}
-
-export const authActions = {
-    login,
-    logout
-};
