@@ -1,7 +1,6 @@
 import { RSAA } from 'redux-api-middleware';
 
 import { authConstants } from '../constants';
-import { authService } from '../services';
 
 export const login = (username, password) => ({
   [RSAA]: {
