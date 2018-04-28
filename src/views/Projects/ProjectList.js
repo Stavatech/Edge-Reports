@@ -26,11 +26,11 @@ class ProjectList extends Component {
 
   render() {
     let rows = this.props.projects.map((project) => (
-      <tr key={project.projectId}  onClick={() => this.openProject(project.projectId)}>
-        <td>{project.projectId}</td>
-        <td>{project.projectName}</td>
+      <tr key={project.project_code}  /*onClick={() => this.openProject(project.projectId)}*/>
+        <td>{project.project_code}</td>
+        <td>{project.name}</td>
+        <td>{project.description}</td>
         <td>{project.deadline}</td>
-        <td>{project.status}</td>
       </tr>
     ));
 
@@ -43,10 +43,10 @@ class ProjectList extends Component {
       <Table hover bordered striped responsive size="sm">
         <thead>
           <tr>
-            <th>Project ID</th>
+            <th>Project Code</th>
             <th>Project Name</th>
+            <th>Description</th>
             <th>Deadline</th>
-            <th>Status</th>
           </tr>
         </thead>
         <tbody>

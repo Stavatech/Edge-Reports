@@ -1,14 +1,18 @@
 import { projectConstants } from '../constants';
 
-const initialState = {projects: [], projectsLoaded: false};
+const initialState = () => ({
+    projects: [],
+    projectsLoaded: false,
+    projectsLoading: false,
+    projectSaving: false,
+    errors: {}
+  }
+);
 
-const projects = (state = initialState, action) => {
+const projects = (state = initialState(), action) => {
   switch (action.type) {
     case projectConstants.SAVE_REQUEST:
-      return {
-        ...state,
-        loading: true
-      }
+      return {...state, loading: true}
 
     case projectConstants.SAVE_SUCCESS:
       let project = state.projects.find((item) => {
@@ -28,19 +32,16 @@ const projects = (state = initialState, action) => {
         project.deadline = action.deadline;
       }
 
-      return {
-        ...state,
-        loading: false
-      }
+      return {...state, loading: false}
 
     case projectConstants.SAVE_FAILURE:
-      return {
-        ...state,
-        loading: false
-      }
+      return {...state, loading: false}
+
+    case projectConstants.LIST_REQUEST:
+      return {...state, projectsLoading: true, projectsLoaded: false}
 
     case projectConstants.LIST_SUCCESS:
-      return {...state, projects: action.projects, projectsLoaded: true}
+      return {...state, projects: action.payload, projectsLoading: false, projectsLoaded: true}
     default:
       return state
   }
