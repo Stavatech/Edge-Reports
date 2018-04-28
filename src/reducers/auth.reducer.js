@@ -37,7 +37,7 @@ export default (state = initialState(), action) => {
         token: action.payload.access, ...jwtDecode(action.payload.access)
       };
 
-      localStorage.setItem('tokens', tokens)
+      localStorage.setItem('tokens', JSON.stringify(tokens));
 
       return {...state, access: tokens.access}
 
