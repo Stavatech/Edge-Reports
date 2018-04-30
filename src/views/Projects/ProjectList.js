@@ -9,24 +9,17 @@ import ButtonWrapper from '../../components/ButtonWrapper';
 import { listProjects } from '../../actions';
 
 class ProjectList extends Component {
-  componentWillUpdate () {
-    const { router } = this.context;
-    this.router = router;
-  }
-
   componentDidMount() {
-    if(!this.props.projectsLoaded) {
-      this.props.listProjects();
-    }
+    this.props.listProjects();
   }
 
-  openProject = (id) => {
-    this.router.transition("/projects/detail/" + id);
+  selectProject = (code) => {
+    this.context.router.transition("/projects/detail/" + code);
   }
 
   render() {
     let rows = this.props.projects.map((project) => (
-      <tr key={project.project_code}  /*onClick={() => this.openProject(project.projectId)}*/>
+      <tr key={project.project_code}  onClick={() => this.selectProject(project.project_code)}>
         <td>{project.project_code}</td>
         <td>{project.name}</td>
         <td>{project.description}</td>
@@ -58,9 +51,11 @@ class ProjectList extends Component {
 }
 
 const mapStateToProps = state => {
+  let projectsState = state.projects;
+
   return {
-    projects: state.projects.projects,
-    projectsLoaded: state.projects.projectsLoaded
+    projects: projectsState.projects,
+    projectsLoading: projectsState.projectsLoading
   }
 }
 
