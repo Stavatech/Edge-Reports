@@ -6,8 +6,6 @@ import {
 } from 'reactstrap';
 import ButtonWrapper from '../../components/ButtonWrapper';
 
-import { listProjects } from '../../actions';
-
 class ProjectDetail extends Component {
   render() {
     return <div className="animated fadeIn">

@@ -33,7 +33,7 @@ class ProjectList extends Component {
           New Project
         </Button>
       </ButtonWrapper>
-      <Table hover bordered striped responsive size="sm">
+      <Table hover striped responsive size="sm">
         <thead>
           <tr>
             <th>Project Code</th>
