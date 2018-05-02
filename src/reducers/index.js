@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 
 import projects from './projects.reducer';
+import reports from './reports.reducer';
 import auth, * as authState from './auth.reducer';
 
 export default combineReducers({
   projects,
-  auth
+  auth,
+  reports
 });
 
 export const isAuthenticated =

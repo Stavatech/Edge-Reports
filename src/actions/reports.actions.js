@@ -8,7 +8,7 @@ export const generateReport = (reportId, filters) => {
 
   return {
     [RSAA]: {
-      endpoint: `/api/reports/{report_id}?filters={filters}`,
+      endpoint: "/api/reports/" + reportId + "?filters=" + filters,
       method: 'GET',
       headers: { ...authHeader(), 'Content-Type': 'application/json' },
       types: [
@@ -17,6 +17,10 @@ export const generateReport = (reportId, filters) => {
     }
   }
 };
+
+export const clearReportData = () => ({
+  type: reportConstants.CLEAR_REPORT_DATA
+});
 
 export const setReportId = (reportId) => ({
   type: reportConstants.SET_REPORT,

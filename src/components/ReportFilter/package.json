@@ -1,0 +1,6 @@
+{
+  "name": "ReportFilter",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ReportFilter.js"
+}

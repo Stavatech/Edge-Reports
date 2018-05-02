@@ -4,3 +4,16 @@
 .auth .container-fluid {
   padding: 0 0px;
 }
+
+.react-date-picker__calendar {
+  z-index: 1;
+  width: 350px;
+  max-width: 100vw;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.dateContainer {
+  padding-left: 20px;
+}
