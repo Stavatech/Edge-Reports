@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import DatePicker from 'react-date-picker';
+
 import {
   Row,
   Col,
@@ -11,26 +13,40 @@ import {
   Button,
   Input
 } from 'reactstrap';
-import DatePicker from 'react-date-picker';
+
+const monthAdd = (date, month) => {
+  var temp = date;
+  temp = new Date(date.getFullYear(), date.getMonth(), 1);
+  temp.setMonth(temp.getMonth() + (month + 1));
+  temp.setDate(temp.getDate() - 1);
+
+  if (date.getDate() < temp.getDate()) {
+      temp.setDate(date.getDate());
+  }
+
+  return temp;
+};
 
 class ReportFilter extends Component {
   state = {
     projectCode: undefined,
-    startDate: new Date(),
-    endDate: new Date()
+    startDate: undefined,
+    endDate: undefined
   };
 
   componentDidMount() {
     this.props.clearReportData();
     this.props.listProjects();
+
+    let endDate = new Date();
+    let startDate = monthAdd(endDate, -1);
+
+    this.setState({...this.state, startDate, endDate})
   }
 
   setStartDate = startDate => this.setState({ startDate });
   setEndDate = endDate => this.setState({ endDate });
-  setProjectCode = (event) => {
-    console.log(event.target.value)
-    this.setState({...this.state, projectCode: event.target.value });
-  };
+  setProjectCode = (event) => this.setState({...this.state, projectCode: event.target.value });
 
   onSubmit = () => {
     event.preventDefault();

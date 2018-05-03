@@ -30,6 +30,10 @@ class InternalReviewsReport extends Component {
   }
 
   renderReport(reportData) {
+    if (reportData.length == 1) {
+      return this.renderNoData();
+    }
+
     let { num_tasks, deadlines_missed, avg_time_diff, avg_time_diff_missed } = reportData[0];
     let aggregatedReport = this.renderAggregatedReport(num_tasks, deadlines_missed, avg_time_diff, avg_time_diff_missed);
 
@@ -37,6 +41,20 @@ class InternalReviewsReport extends Component {
     let employeeReport = this.renderEmployeeReport(employeeReportData);
 
     return <div><div>{aggregatedReport}</div><div>{employeeReport}</div></div>;
+  }
+
+  renderNoData() {
+    return (
+      <Card>
+        <CardBody>
+          <Row>
+            <Col xl="12">
+              <strong>No data was found for this period. Please adjust the filters and try again.</strong>
+            </Col>
+          </Row>
+        </CardBody>
+      </Card>
+    );
   }
 
   renderAggregatedReport(num_tasks, deadlines_missed, avg_time_diff, avg_time_diff_missed) {

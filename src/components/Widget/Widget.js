@@ -1,26 +1,12 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {Card, CardBody, Progress} from 'reactstrap';
 import classNames from 'classnames';
 import {mapToCssModules} from 'reactstrap/lib/utils';
 
-const propTypes = {
-  header: PropTypes.string,
-  icon: PropTypes.string,
-  color: PropTypes.string,
-  value: PropTypes.string,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  cssModule: PropTypes.object,
-  invert: PropTypes.bool
-};
-
 const defaultProps = {
-  header: '87.500',
-  icon: "icon-settings",
+  header: '0',
   color: 'info',
-  value: "25",
-  children: "Visitors",
+  children: "",
   invert: false
 };
 
@@ -51,7 +37,6 @@ class Widget extends Component {
   }
 }
 
-Widget.propTypes = propTypes;
 Widget.defaultProps = defaultProps;
 
 export default Widget;

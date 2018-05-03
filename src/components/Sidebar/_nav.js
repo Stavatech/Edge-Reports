@@ -25,7 +25,7 @@ export default {
       icon: 'icon-chart'
     },
     {
-      name: 'Storyboards Reworks',
+      name: 'Storyboard Reworks',
       url: '/returns',
       icon: 'icon-chart'
     },
