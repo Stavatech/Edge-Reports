@@ -23,7 +23,7 @@ class InstructionalDesignersReport extends Component {
 
     return (
       <div className="animated fadeIn">
-        <ReportFilter reportId="SE" {...this.props}/>
+        <ReportFilter reportId="SE" withDateRange={true} {...this.props}/>
         {report}
       </div>
     )

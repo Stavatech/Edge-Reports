@@ -23,7 +23,7 @@ class InternalReviewsReport extends Component {
 
     return (
       <div className="animated fadeIn">
-        <ReportFilter reportId="IE" {...this.props}/>
+        <ReportFilter reportId="IE" withDateRange={true} {...this.props}/>
         {report}
       </div>
     )

@@ -38,10 +38,12 @@ class ReportFilter extends Component {
     this.props.clearReportData();
     this.props.listProjects();
 
-    let endDate = new Date();
-    let startDate = monthAdd(endDate, -1);
+    if (this.props.withDateRange) {
+      let endDate = new Date();
+      let startDate = monthAdd(endDate, -1);
 
-    this.setState({...this.state, startDate, endDate})
+      this.setState({...this.state, startDate, endDate})
+    }
   }
 
   setStartDate = startDate => this.setState({ startDate });
@@ -51,10 +53,14 @@ class ReportFilter extends Component {
   onSubmit = () => {
     event.preventDefault();
 
-    let filters = {
-      deadline__gte: this.state.startDate,
-      deadline__lte: this.state.endDate
-    };
+    let filters = {};
+
+    if (this.props.withDateRange) {
+      filters = {
+        deadline__gte: this.state.startDate,
+        deadline__lte: this.state.endDate
+      };
+    }
 
     if (this.state.projectCode && this.state.projectCode !== 'any') {
       filters['module__course__project__project_code'] = this.state.projectCode;
@@ -109,21 +115,9 @@ class ReportFilter extends Component {
               {projectOptions}
             </Input>
           </div>
-          <div className="dateContainer">
-            <Label htmlFor="startDate">Start date:</Label> <br/>
-            <DatePicker
-                id="startDate"
-                onChange={this.setStartDate}
-                value={this.state.startDate}
-              />
-          </div>
-          <div className="dateContainer">
-            <Label htmlFor="endDate">End date:</Label> <br/>
-            <DatePicker
-                onChange={this.setEndDate}
-                value={this.state.endDate}
-              />
-          </div>
+          {
+            this.props.withDateRange ? this.renderDateRangeFilter() : ""
+          }
         </FormGroup>
         <FormGroup row>
           <div className="dateContainer">
@@ -134,7 +128,29 @@ class ReportFilter extends Component {
         </FormGroup>
       </Form>
     );
-  };
+  }
+
+  renderDateRangeFilter() {
+    return (
+      <section>
+        <div className="dateContainer">
+          <Label htmlFor="startDate">Start date:</Label> <br/>
+          <DatePicker
+              id="startDate"
+              onChange={this.setStartDate}
+              value={this.state.startDate}
+            />
+        </div>
+        <div className="dateContainer">
+          <Label htmlFor="endDate">End date:</Label> <br/>
+          <DatePicker
+              onChange={this.setEndDate}
+              value={this.state.endDate}
+            />
+        </div>
+      </section>
+    );
+  }
 };
 
 export default ReportFilter;

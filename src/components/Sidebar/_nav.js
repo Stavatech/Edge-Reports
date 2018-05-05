@@ -1,10 +1,10 @@
 export default {
   items: [
-    {
-      name: 'Dashboard',
-      url: '/dashboard',
-      icon: 'icon-speedometer'
-    },
+    // {
+    //   name: 'Dashboard',
+    //   url: '/dashboard',
+    //   icon: 'icon-speedometer'
+    // },
     {
       title: true,
       name: 'Reports',
@@ -43,10 +43,10 @@ export default {
       url: '/projects',
       icon: 'icon-disc'
     },
-    {
-      name: 'Users',
-      url: '/users',
-      icon: 'icon-people'
-    }
+    // {
+    //   name: 'Users',
+    //   url: '/users',
+    //   icon: 'icon-people'
+    // }
   ]
 };
