@@ -24,3 +24,9 @@ export const authErrors =
   state => authState.errors(state.auth)
 export const isAuthenticating =
   state => authState.loggingIn(state.auth)
+export const withAuth = (headers = {}) => {
+  return (state) => ({
+    ...headers,
+    'Authorization': `Bearer ${accessToken(state)}`
+  })
+}
