@@ -50,7 +50,7 @@ class ReportFilter extends Component {
   setEndDate = endDate => this.setState({ endDate });
   setProjectCode = (event) => this.setState({...this.state, projectCode: event.target.value });
 
-  onSubmit = () => {
+  onSubmit = (event) => {
     event.preventDefault();
 
     let filters = {};
