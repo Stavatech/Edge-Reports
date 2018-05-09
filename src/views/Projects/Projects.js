@@ -26,7 +26,7 @@ class Projects extends Component {
               <CardBody>
                 <Route exact path="/projects" name="Projects" component={ProjectList} />
                 <Route path="/projects/new" name="Projects" component={CreateProjectForm} />
-                <Route path="/projects/detail" name="Projects" component={ProjectDetail} />
+                <Route path="/projects/detail/:projectCode" name="Projects" component={ProjectDetail} />
               </CardBody>
             </Card>
           </Col>

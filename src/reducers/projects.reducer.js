@@ -4,6 +4,8 @@ const initialState = () => ({
     projects: [],
     projectsLoading: false,
     projectSaving: false,
+    selectedProject: undefined,
+    projectLoading: false,
     errors: {}
   }
 );
@@ -45,13 +47,14 @@ const projects = (state = initialState(), action) => {
     case projectConstants.LIST_FAILURE:
       return {...state, projectsLoading: false, projectsLoaded: true}
 
-    // not yet implemented
     case projectConstants.GET_REQUEST:
-      return {...state}
+      return {...state, selectedProject: undefined, projectLoading: true}
+
     case projectConstants.GET_SUCCESS:
-      return {...state}
+      return {...state, selectedProject: action.payload, projectLoading: false}
+
     case projectConstants.GET_FAILURE:
-      return {...state}
+      return {...state, selectedProject: undefined, projectLoading: false}
 
     default:
       return state

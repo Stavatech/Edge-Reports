@@ -14,9 +14,9 @@ export const listProjects = () => ({
   }
 });
 
-export const getProject = (code) => ({
+export const getProject = (projectCode) => ({
   [RSAA]: {
-    endpoint: '/api/projects/' + code,
+    endpoint: '/api/projects/' + projectCode,
     method: 'GET',
     headers: { ...authHeader(), 'Content-Type': 'application/json' },
     types: [

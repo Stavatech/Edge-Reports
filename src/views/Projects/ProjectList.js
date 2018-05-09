@@ -5,6 +5,7 @@ import {
   Button
 } from 'reactstrap';
 import ButtonWrapper from '../../components/ButtonWrapper';
+import { Link } from 'react-router-dom';
 
 import { listProjects } from '../../actions';
 
@@ -13,14 +14,10 @@ class ProjectList extends Component {
     this.props.listProjects();
   }
 
-  selectProject = (code) => {
-    this.context.router.transition("/projects/detail/" + code);
-  }
-
   render() {
     let rows = this.props.projects.map((project) => (
-      <tr key={project.project_code}  onClick={() => this.selectProject(project.project_code)}>
-        <td>{project.project_code}</td>
+      <tr key={project.project_code}>
+        <td><Link to={"/projects/detail/" + project.project_code}>{project.project_code}</Link></td>
         <td>{project.name}</td>
         <td>{project.description}</td>
         <td>{project.deadline}</td>
