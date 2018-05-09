@@ -43,7 +43,7 @@ class Header extends Component {
         </NavbarToggler>
         <Nav className="d-md-down-none" navbar>
           <NavItem className="d-md-down-none">
-            <NavLink href="#" onClick={this.asideToggle}><i className="icon-bell"></i><Badge pill color="danger">5</Badge></NavLink>
+            <NavLink href="#" onClick={this.asideToggle}><i className="icon-bell"></i></NavLink>
           </NavItem>
           <HeaderDropdown/>
         </Nav>
