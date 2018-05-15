@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 import {
   Col,
   Card,
@@ -16,17 +16,22 @@ import { saveProject } from '../../actions';
 
 class CreateProjectForm extends Component {
   state = {
-    projectId: '',
-    projectName: '',
-    deadline: ''
+    projectCode: '',
+    name: '',
+    description: '',
+    deadline: new Date()
   };
 
-  updateProjectId = (e) => {
-    this.setState({...this.state, projectId: e.target.value});
+  updateProjectCode = (e) => {
+    this.setState({...this.state, projectCode: e.target.value});
   };
 
   updateProjectName = (e) => {
-    this.setState({...this.state, projectName: e.target.value});
+    this.setState({...this.state, name: e.target.value});
+  };
+
+  updateDescription = (e) => {
+    this.setState({...this.state, description: e.target.value});
   };
 
   updateDeadline = (e) => {
@@ -35,8 +40,9 @@ class CreateProjectForm extends Component {
 
   saveProject = () => {
     this.props.saveProject(
-      this.state.projectId,
-      this.state.projectName,
+      this.state.projectCode,
+      this.state.name,
+      this.state.description,
       this.state.deadline
     );
   };
@@ -46,13 +52,19 @@ class CreateProjectForm extends Component {
       <FormGroup row>
         <Col xl="12">
           <Label htmlFor="projectId">Project ID</Label>
-          <Input type="text" id="projectId" value={this.state.projectId} onChange={this.updateProjectId} />
+          <Input type="text" id="projectId" value={this.state.projectCode} onChange={this.updateProjectCode} />
         </Col>
       </FormGroup>
       <FormGroup row>
         <Col xl="12">
-          <Label htmlFor="projectName">Project Name</Label>
-          <Input type="text" id="projectName" value={this.state.projectName} onChange={this.updateProjectName} />
+          <Label htmlFor="projectName">Name</Label>
+          <Input type="text" id="projectName" value={this.state.name} onChange={this.updateProjectName} />
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Col xl="12">
+          <Label htmlFor="description">Description</Label>
+          <Input type="text" id="description" value={this.state.description} onChange={this.updateDescription} />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -83,8 +95,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    saveProject: (projectId, projectName, deadline) => dispatch(
-      saveProject(projectId, projectName, deadline)
+    saveProject: (projectId, projectName, description, deadline) => dispatch(
+      saveProject(projectId, projectName, description, deadline)
     )
   }
 }
